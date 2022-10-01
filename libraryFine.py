@@ -1,56 +1,68 @@
 class hackerRank:
-	def libraryFine(self, d1, m1, y1, d2, m2, y2):
-		if y1>y2:
-			return 10000
-		elif m1>m1 and y1==y2:
-			return 500*(m1-m2)
-		elif d1>d2 and m1==m2 and y1==y2:
-			return 15*(d1-d2)
-		else:
-			return 0
+    def libraryFine(self, d1, m1, y1, d2, m2, y2)->int:
+        if y1>y2:
+            return 10000
+        elif m1>m1 and y1==y2:
+            return 500*(m1-m2)
+        elif d1>d2 and m1==m2 and y1==y2:
+            return 15*(d1-d2)
+        else:
+            return 0
 	##############################
-	def cutTheStick(self, arr:list)->list:
-		sizes=[]
-		cmpt=0
-		while(len(arr)!=0):
-			sizes.append(len(arr))
-			minimum=min(arr)
-			index=0
-			for number in arr:
-				if number==minimum:
-					arr.remove(minimum)
-				index+=1
-			index=0
-			for item in arr:
-				arr[index]=arr[index]-minimum
-			cmpt+=1
-		return sizes
+    def equalizeArray(self,arr:list)->int:
+        mostRepeated:int 
+        mostRepeated=0
+        for n in arr:
+            rep=0
+            for i in arr:
+                if n==i:
+                    rep+=1
+            if rep>mostRepeated:
+                mostRepeated=rep
+        return len(arr)-mostRepeated
+    ###########################
+    def cutTheStick(self, arr:list)->list:
+        sizes=[]
+        cmpt=0
+        while(len(arr)!=0):
+            sizes.append(len(arr))
+            minimum=min(arr)
+            index=0
+            for number in arr:
+                if number==minimum:
+                    arr.remove(minimum)
+                index+=1
+            index=0
+            for item in arr:
+                arr[index]=arr[index]-minimum
+            cmpt+=1
+        return sizes
 	#################################
-	def equalizeArray(self,arr:list)->int:
-		mostRepeated:int 
-		mostRepeated=0
-		for n in arr:
-			rep=0
-			for i in arr:
-				if n==i:
-					rep+=1
-			if rep>mostRepeated:
-				mostRepeated=rep
-		return len(arr)-mostRepeated
-    ###################################
+	
     def leftRotate(self, d:int, arr:list)->list:
         result=[]
         for cmpt in range(len(arr)):
             result.append(arr[(cmpt+d)%len(arr)]);
         return result
-
-
+        
+    ###########################
+    def matchingString(self, stringList:list, queries:list)->list:
+        response=[]
+        for ch in queries:
+            count=0
+            for sch in stringList:
+                if ch==sch:
+                    count+=1
+            response.append(count)
+        return response
+    ###########################
 
 hack=hackerRank()
 #print(hack.libraryFine(17, 1, 1999, 11, 1, 1999))
 #print(hack.cutTheStick([1,2,3, 4]))
 #print(hack.equalizeArray([1, 2, 3, 3]))
-print(hack.leftRotate(2, [1,2,3,4,5]))
+#print(hack.leftRotate(2, [1,2,3,4,5]))
+#print(hack.matchingString(["ab", "ab", "abc"], ["ab", "abc", "ac"]))
 """
 
 class Result {
@@ -239,5 +251,19 @@ class Result {
     
     
 }
+ public static List<Integer> matchingStrings(List<String> stringList, List<String> queries) {
+    // Write your code here
+    List<Integer> response= new ArrayList<Integer>();
+    for(int cmp=0; cmp<queries.size(); cmp++){
+        int count=0;
+        for(int cmp1=0; cmp1<stringList.size(); cmp1++){
+            if(queries.get(cmp).equals(stringList.get(cmp1))){
+                count++;
+            }
+        }
+        response.add(count);
+    }
+    return response;
 
+    }
 """
