@@ -50,6 +50,22 @@ class LinkedList:
 	##############################
 	def getHead(self):
 		return self.Head;
+	##############################
+	def delete(self):
+		if self.Head is None:
+			print("empty linked list !!")
+			return 
+		if self.Head.getNext() is None:
+			self.Head=None
+			return
+		vHead=self.getHead()
+		while vHead.getNext().getNext() is not None:
+			vHead=vHead.getNext()
+		vHead.setNext(None)
+	############################### 
+	def debDelete(self):
+		self.Head=self.getHead().getNext()
+	############################### 
 ls=LinkedList()
 
 ls.append(7)
@@ -57,4 +73,7 @@ ls.append(7)
 ls.append(7)
 ls.appendMany(5,4,10,89)
 ls.preAppend(102)
+ls.delete()
+ls.delete()
+ls.debDelete()
 ls.show()
