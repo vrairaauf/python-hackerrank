@@ -58,8 +58,3 @@ ls.append(7)
 ls.appendMany(5,4,10,89)
 ls.preAppend(102)
 ls.show()
-
-def hiArgs(*args):
-	for arg in args:
-		print(arg)
-#hiArgs(1, 2, 3, 85, 41)
