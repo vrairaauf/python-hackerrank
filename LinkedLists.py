@@ -89,12 +89,26 @@ class LinkedList:
 				return False
 		return True
 	############################
+	def reverse(self):
+		if self.Head is not None:
+			rev=LinkedList()
+			vHead=self.getHead()
+			while vHead is not None:
+				rev.preAppend(vHead.getValue())
+				vHead=vHead.getNext()
+			self.Head=rev.getHead()
+			return
+		print("empty list to reverse !")
+
 ls=LinkedList()
 ls2=LinkedList()
 ls.append(7)
 ls.append(7)
 ls.append(7)
 ls.appendMany(5,4,10,89)
+ls.reverse()
+ls.show()
+"""
 ls.preAppend(102)
 ls.delete()
 ls.delete()
@@ -112,3 +126,4 @@ ls2.debDelete()
 
 if ls.compare(ls2):
 	print("equals lists")
+"""
